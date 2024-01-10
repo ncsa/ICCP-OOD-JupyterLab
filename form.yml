@@ -27,10 +27,10 @@ attributes:
   #     modules: "python/3.5 cuda/8.0.44"
   
   bc_account:
-    label: "Name of account"
-    widget: "text_field"
-    help: "Chargeable account of the form abcd-delta-cpu or abcd-delta-gpu. Replace abcd with your allocation code."
-    value: ""
+  # label: "Name of account"
+    widget: "hidden_field"
+  # help: "Chargeable account of the form abcd-delta-cpu or abcd-delta-gpu. Replace abcd with your allocation code."
+    value: "uiuc"
   
   bc_reservation:
     label: "Name of reservation (leave empty if none)"
@@ -40,15 +40,12 @@ attributes:
   bc_partition:
     label: "Partition"
     widget: "select"
-    value: "cpu-interactive"
-    help: "Interactive partitions are limited to one hour."
+    value: "debug"
+    help: "Jobs submitted to the debug partition receive higher priority but are limited to 4 hours."
     options:
-      - ["cpu-interactive","cpu-interactive"]
-      - ["gpuA100x4-interactive","gpuA100x4-interactive"]
-      - ["gpuA40x4-interactive","gpuA40x4-interactive"]
       - ["cpu","cpu"]
-      - ["gpuA100x4","gpuA100x4"]
-      - ["gpuA40x4","gpuA40x4"]
+      - ["gpu","gpu"]
+      - ["debug","debug"]
 
   bc_num_slots:
     label: "Number of CPUs"
@@ -58,7 +55,7 @@ attributes:
   bc_num_memory:
     label: "Amount of RAM"
     widget: "text_field"
-    help: "Use Slurm format, e.g. 4096M, 10G. If left blank, 1000 MB will be allocated per CPU core requested."
+    help: "Use Slurm format, e.g. 4096M, 10G. If left blank, 1200 MB will be allocated per CPU core requested."
 
   bc_num_gpus:
     label: "Number of GPUs"
