@@ -8,7 +8,7 @@
 # under /etc/ood/config/clusters.d/*.yml
 # @example Use the Owens cluster at Ohio Supercomputer Center
 #     cluster: "owens"
-cluster: "icctest"
+cluster: "icc"
 
 # Define attribute values that aren't meant to be modified by the user within
 # the Dashboard form
@@ -25,13 +25,13 @@ attributes:
   #     modules: "python/3.5"
   # @example Using combination of modules
   #     modules: "python/3.5 cuda/8.0.44"
-  
+
   bc_account:
-  # label: "Name of account"
-    widget: "hidden_field"
-  # help: "Chargeable account of the form abcd-delta-cpu or abcd-delta-gpu. Replace abcd with your allocation code."
-    value: "uiuc"
-  
+    label: "Name of account"
+    widget: "text_field"
+    help: "/sw/cc.users/tools/my.accounts can be used to reference your accounts on login nodes."
+    value: ""
+
   bc_reservation:
     label: "Name of reservation (leave empty if none)"
     widget: "text_field"
@@ -39,13 +39,9 @@ attributes:
 
   bc_partition:
     label: "Partition"
-    widget: "select"
-    value: "debug"
-    help: "Jobs submitted to the debug partition receive higher priority but are limited to 4 hours."
-    options:
-      - ["cpu","cpu"]
-      - ["gpu","gpu"]
-      - ["debug","debug"]
+    widget: "text_field"
+    value: ""
+    #help: "Jobs submitted to the debug partition receive higher priority but are limited to 4 hours."
 
   bc_num_slots:
     label: "Number of CPUs"
@@ -94,3 +90,4 @@ form:
   - bc_num_gpus
   - bc_email_on_started
   - working_dir
+
